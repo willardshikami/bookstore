@@ -1,0 +1,26 @@
+{
+  "name": "bookstore",
+  "version": "1.0.0",
+  "description": "A bookstore app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willardshikami/bookstore.git"
+  },
+
+  "dependencies":{
+    "express" : "*",
+    "body-parser" : "*",
+    "mongoose" : "*"
+  },
+
+  "author": "Willard Shikami",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/willardshikami/bookstore/issues"
+  },
+  "homepage": "https://github.com/willardshikami/bookstore#readme"
+}

@@ -27,12 +27,13 @@ app.get('/api/genres', function(req, res){
 });
 
 //add/create genre
-app.get('/api/genres', function(req, res){
-    Genre.getGenres(function(err, genres){
+app.post('/api/genres', function(req, res){
+    var genre = req.body;
+    Genre.addGenres(genre, function(err, genres){
         if(err){
             throw err;
         }
-            res.json(genres);
+            res.json(genre);
     });
 });
 

@@ -4,8 +4,9 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 Genre = require('./models/genre');
+Book = require('./models/book');
 
-//connceting to mongoose
+//connecting to mongoose
 mongoose.connect('mongodb://localhost/bookstore');
 var db = mongoose.connection;
 

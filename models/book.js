@@ -1,7 +1,9 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
 
 //Books Schema
-var bookSchema = mongoose.Schema;({
+var bookSchema = mongoose.Schema({
     title :{
         type : String,
         required : true
@@ -35,10 +37,10 @@ var bookSchema = mongoose.Schema;({
     }
 });
 
-//Make the book object accesible anywhere
-var Book = module.exports = mongoose.model('Book', bookSchema);
+//Makes the genre object accesible from anywhere else.
+var Book = module.exports = mongoose.model('Book' , bookSchema);
 
-//Function to get books
+//Function to get Genres
 module.exports.getBooks = function(callback, limit){
     Book.find(callback).limit(limit);
 }

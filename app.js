@@ -26,6 +26,16 @@ app.get('/api/genres', function(req, res){
     });
 });
 
+//add/create genre
+app.get('/api/genres', function(req, res){
+    Genre.getGenres(function(err, genres){
+        if(err){
+            throw err;
+        }
+            res.json(genres);
+    });
+});
+
 //adding books api routes
 app.get('/api/books', function(req, res){
     Book.getBooks(function(err, books){
@@ -35,6 +45,18 @@ app.get('/api/books', function(req, res){
         res.json(books);
     });
 });
+
+//get request 
+//route to single book
+app.get('/api/books/:_id', function(req, res){
+    Book.getBookById(req.params._id, function(err, book){
+        if(err){
+            throw err;
+        }
+        res.json(book);
+    });
+});
+
 
 app.listen(3000);
 console.log('Connected to port 3000')

@@ -40,7 +40,12 @@ var bookSchema = mongoose.Schema({
 //Makes the genre object accesible from anywhere else.
 var Book = module.exports = mongoose.model('Book' , bookSchema);
 
-//Function to get Genres
+//Function to get Books
 module.exports.getBooks = function(callback, limit){
     Book.find(callback).limit(limit);
+}
+
+//function to get one book
+module.exports.getBookById = function(id, callback){
+    Book.findById(id, callback);
 }

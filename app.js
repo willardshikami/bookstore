@@ -15,13 +15,23 @@ app.get('/', function(req, res){
     res.send('Kindly use /api/books or /api/genres');
 });
 
-//adding api route
+//adding genres api route
 app.get('/api/genres', function(req, res){
     Genre.getGenres(function(err, genres){
         if(err){
             throw err;
         }
             res.json(genres);
+    });
+});
+
+//adding books api routes
+app.get('/api/books', function(req, res){
+    Book.getBooks(function(err, books){
+        if(err){
+            throw err;
+        }
+        res.json(books);
     });
 });
 

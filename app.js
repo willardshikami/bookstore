@@ -3,6 +3,8 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
+app.use(bodyParser.json());
+
 Genre = require('./models/genre');
 Book = require('./models/book');
 
@@ -16,7 +18,7 @@ app.get('/', function(req, res){
     res.send('Kindly use /api/books or /api/genres');
 });
 
-//adding genres api route
+//genres api route
 app.get('/api/genres', function(req, res){
     Genre.getGenres(function(err, genres){
         if(err){
@@ -29,7 +31,7 @@ app.get('/api/genres', function(req, res){
 //add/create genre
 app.post('/api/genres', function(req, res){
     var genre = req.body;
-    Genre.addGenres(genre, function(err, genres){
+    Genre.addGenre(genre, function(err, genre){
         if(err){
             throw err;
         }
@@ -37,7 +39,7 @@ app.post('/api/genres', function(req, res){
     });
 });
 
-//adding books api routes
+//books api routes
 app.get('/api/books', function(req, res){
     Book.getBooks(function(err, books){
         if(err){
@@ -55,6 +57,18 @@ app.get('/api/books/:_id', function(req, res){
             throw err;
         }
         res.json(book);
+    });
+});
+
+
+//add/create new book
+app.post('/api/books', function(req, res){
+    var genre = req.body;
+    Book.addBook(book, function(err, book){
+        if(err){
+            throw err;
+        }
+            res.json(book);
     });
 });
 

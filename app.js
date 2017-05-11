@@ -63,7 +63,7 @@ app.get('/api/books/:_id', function(req, res){
 
 //add/create new book
 app.post('/api/books', function(req, res){
-    var genre = req.body;
+    var book = req.body;
     Book.addBook(book, function(err, book){
         if(err){
             throw err;

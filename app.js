@@ -28,10 +28,22 @@ app.get('/api/genres', function(req, res){
     });
 });
 
-//add/create genre
+//add genre
 app.post('/api/genres', function(req, res){
     var genre = req.body;
     Genre.addGenre(genre, function(err, genre){
+        if(err){
+            throw err;
+        }
+            res.json(genre);
+    });
+});
+
+//update genre
+app.put('/api/genres/:_id', function(req, res){
+    var id = req.params._id; 
+    var genre = req.body;
+    Genre.updateGenre(id, genre, {}, function(err, genre){
         if(err){
             throw err;
         }
@@ -61,10 +73,22 @@ app.get('/api/books/:_id', function(req, res){
 });
 
 
-//add/create new book
+//add new book
 app.post('/api/books', function(req, res){
     var book = req.body;
     Book.addBook(book, function(err, book){
+        if(err){
+            throw err;
+        }
+            res.json(book);
+    });
+});
+
+//update genre
+app.put('/api/books/:_id', function(req, res){
+    var id = req.params._id; 
+    var book = req.body;
+    Book.updateBook(id, book, {}, function(err, book){
         if(err){
             throw err;
         }

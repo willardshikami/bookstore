@@ -12,27 +12,31 @@ myApp.controller('BooksController', ['$scope', '$http', '$location', '$routePara
 
 	$scope.getBook = function(){
 		var id = $routeParams.id;
-		$http.get('/api/books/'+id).success(function(response){
-			$scope.book = response;
+		$http.get('/api/books/'+id)
+        .then(function(response){
+			$scope.book = response.data;
 		});
 	}
 
 	$scope.addBook = function(){
 		console.log($scope.book);
-		$http.post('/api/books/', $scope.book).success(function(response){
+		$http.post('/api/books/', $scope.book)
+        .then(function(response){
 			window.location.href='#/books';
 		});
 	}
 
 	$scope.updateBook = function(){
 		var id = $routeParams.id;
-		$http.put('/api/books/'+id, $scope.book).success(function(response){
+		$http.put('/api/books/'+id, $scope.book)
+        .then(function(response){
 			window.location.href='#/books';
 		});
 	}
 
 	$scope.removeBook = function(id){
-		$http.delete('/api/books/'+id).success(function(response){
+		$http.delete('/api/books/'+id)
+        .then(function(response){
 			window.location.href='#/books';
 		});
 	}

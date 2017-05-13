@@ -10,6 +10,7 @@ myApp.controller('BooksController', ['$scope', '$http', '$location', '$routePara
 		});
 	}
 
+	//show book
 	$scope.getBook = function(){
 		var id = $routeParams.id;
 		$http.get('/api/books/'+id)
@@ -18,6 +19,7 @@ myApp.controller('BooksController', ['$scope', '$http', '$location', '$routePara
 		});
 	}
 
+	//addbook
 	$scope.addBook = function(){
 		console.log($scope.book);
 		$http.post('/api/books/', $scope.book)

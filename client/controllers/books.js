@@ -2,7 +2,7 @@ var myApp = angular.module('myApp');
 
 myApp.controller('BooksController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
 	console.log('BooksController loaded...');
-
+	
 	$scope.getBooks = function(){
 		$http.get('/api/books')
         .then(function(response){
@@ -19,7 +19,7 @@ myApp.controller('BooksController', ['$scope', '$http', '$location', '$routePara
 		});
 	}
 
-	//addbook
+	//add book
 	$scope.addBook = function(){
 		console.log($scope.book);
 		$http.post('/api/books/', $scope.book)
@@ -28,6 +28,7 @@ myApp.controller('BooksController', ['$scope', '$http', '$location', '$routePara
 		});
 	}
 
+	//update book
 	$scope.updateBook = function(){
 		var id = $routeParams.id;
 		$http.put('/api/books/'+id, $scope.book)
@@ -36,6 +37,7 @@ myApp.controller('BooksController', ['$scope', '$http', '$location', '$routePara
 		});
 	}
 
+	//delete book
 	$scope.removeBook = function(id){
 		$http.delete('/api/books/'+id)
         .then(function(response){
